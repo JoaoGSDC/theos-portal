@@ -1,15 +1,23 @@
 import styled from 'styled-components';
 
-export const OportunitiesSection = styled.section`
+export const OportunitiesContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  background-image: url('/assets/img/banner-bg.png');
 
   form {
     display: flex;
-    padding: 16px 16px 0px 8px;
     justify-content: center;
     align-items: center;
+    padding: 16px 16px 16px 8px;
+
+    position: absolute;
+    width: 100%;
+    background-color: #121212;
+
+    img {
+      width: 10%;
+      margin-right: 16px;
+    }
 
     input,
     textarea {
@@ -18,10 +26,9 @@ export const OportunitiesSection = styled.section`
       border: 1px solid rgba(255, 255, 255, 0.5);
       border-radius: 20px;
       color: #fff;
-      margin: 0 0 8px 0;
-      padding: 18px 26px;
+      padding: 8px 12px;
       font-weight: 500;
-      font-size: 18px;
+      font-size: 1rem;
       letter-spacing: 0.8px;
       transition: 0.3s ease-in-out;
 
@@ -95,14 +102,30 @@ export const Informations = styled.div`
   }
 `;
 
+export const ContainerOportunitiesContent = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  justify-content: center;
+  align-items: center;
+
+  // background: linear-gradient(180deg, #121212 28%, #aa367c 60%, #4a2fbd 112%);
+`;
+
 export const OportunitiesContent = styled.div`
   display: flex;
+  background-color: #151515;
+  border-radius: 16px;
+  width: calc(100% - 400px);
+  position: absolute;
+  top: 240px;
 `;
 
 export const LeftContent = styled.div`
   display: flex;
   flex-direction: column;
-  width: 25%;
+  width: 60%;
 `;
 
 export const RightContent = styled.div`
@@ -112,4 +135,26 @@ export const RightContent = styled.div`
   div:first-child {
     width: calc(100% - 24px);
   }
+`;
+
+export const Figure = styled.figure`
+  display: flex;
+  margin: 0px;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+
+  img {
+    width: 100%;
+  }
+`;
+
+export const ImageContainer = styled.div`
+  background-image: url('/assets/img/banner-bg.png');
+  width: 100%;
+  height: 360px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
