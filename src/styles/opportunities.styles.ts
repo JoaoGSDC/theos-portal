@@ -57,7 +57,7 @@ export const OportunitiesContainer = styled.div`
     padding: 14px 48px;
     font-size: 18px;
     margin-left: 8px;
-    border-radius: 0;
+    border-radius: 32px;
     position: relative;
     transition: 0.3s ease-in-out;
 
@@ -74,6 +74,18 @@ export const OportunitiesContainer = styled.div`
 
       &:before {
         width: 100%;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    form {
+      img {
+        display: none;
+      }
+
+      button {
+        padding: 8px 24px;
       }
     }
   }
@@ -118,6 +130,10 @@ export const OportunitiesContent = styled.div`
   width: calc(100% - 400px);
   position: absolute;
   top: 240px;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export const LeftContent = styled.div`
@@ -145,6 +161,14 @@ export const LeftContent = styled.div`
   ::-webkit-scrollbar-thumb:hover {
     background: #414141;
   }
+
+  @media only screen and (max-width: 600px) {
+    width: 100% !important;
+
+    ::-webkit-scrollbar-thumb {
+      background: #4141413a;
+    }
+  }
 `;
 
 export const RightContent = styled.div`
@@ -153,6 +177,10 @@ export const RightContent = styled.div`
 
   div:first-child {
     width: calc(100% - 24px);
+  }
+
+  @media only screen and (max-width: 600px) {
+    display: none;
   }
 `;
 
