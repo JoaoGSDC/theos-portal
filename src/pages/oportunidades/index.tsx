@@ -1,5 +1,4 @@
 import { Card } from '../../components/Card';
-import { Footer } from '../../components/Footer';
 import {
   Content,
   Figure,
@@ -10,7 +9,7 @@ import {
   RightContent,
   ImageContainer,
   ContainerOportunitiesContent,
-} from './styles';
+} from '../../styles/opportunities.styles';
 
 export default function Oportunities() {
   return (
@@ -31,6 +30,24 @@ export default function Oportunities() {
         <ContainerOportunitiesContent>
           <OportunitiesContent>
             <LeftContent>
+              <Card>
+                <Content>
+                  <h3>Desenvolvedor FrontEnd Senior</h3>
+
+                  <Informations>
+                    <h5>ByCross Software</h5>
+                    <h5>Limeira-SP</h5>
+                  </Informations>
+
+                  <h5>Até R$ 14.000,00</h5>
+
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo velit, scelerisque vitae
+                    lobortis sed, condimentum a justo...
+                  </p>
+                </Content>
+              </Card>
+
               <Card>
                 <Content>
                   <h3>Desenvolvedor FrontEnd Senior</h3>

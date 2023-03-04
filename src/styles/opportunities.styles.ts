@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const OportunitiesContainer = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 300px);
 
   form {
     display: flex;
@@ -109,8 +109,6 @@ export const ContainerOportunitiesContent = styled.div`
 
   justify-content: center;
   align-items: center;
-
-  // background: linear-gradient(180deg, #121212 28%, #aa367c 60%, #4a2fbd 112%);
 `;
 
 export const OportunitiesContent = styled.div`
@@ -126,6 +124,27 @@ export const LeftContent = styled.div`
   display: flex;
   flex-direction: column;
   width: 60%;
+  overflow-y: auto;
+  max-height: 600px;
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #414141;
+    border-radius: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #414141;
+  }
 `;
 
 export const RightContent = styled.div`
