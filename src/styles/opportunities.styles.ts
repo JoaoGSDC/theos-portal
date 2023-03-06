@@ -179,6 +179,10 @@ export const RightContent = styled.div`
     width: calc(100% - 24px);
   }
 
+  h1 {
+    color: #545454;
+  }
+
   @media only screen and (max-width: 600px) {
     display: none;
   }
@@ -196,12 +200,26 @@ export const Figure = styled.figure`
   }
 `;
 
-export const ImageContainer = styled.div`
-  background-image: url('/assets/img/banner-bg.png');
+export const ImageContainer = styled.div.attrs(({ background }: any) => ({
+  background,
+}))`
+  background-image: ${(props) => `url(${props.background})`};
   width: 100%;
   height: 360px;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
+
+export const SelectedOpportunityContent = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    color: #fff;
+  }
 `;

@@ -1,14 +1,19 @@
 import Head from 'next/head';
+import { GetServerSideProps } from 'next';
+import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { NavBar } from '../components/Navbar';
 import { Banner } from '../components/Banner';
-import { Skills } from '../components/Skills';
 import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
+import Partners from '../components/Partners';
 
-export default function Home() {
+import { Client } from '../types/Client';
+import api from '../services/api';
+
+export default function Home({ clients }: any) {
   return (
     <>
       <Head>
@@ -21,10 +26,20 @@ export default function Home() {
       <main>
         <NavBar />
         <Banner />
-        <Skills />
+        <Partners clients={clients} />
         <Contact />
         <Footer />
       </main>
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { data } = await api.get<Client[]>('/api/clients/findAll');
+
+  return {
+    props: {
+      clients: data,
+    },
+  };
+};
