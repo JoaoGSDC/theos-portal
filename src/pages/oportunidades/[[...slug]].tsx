@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next';
+import Link from 'next/link';
 import React, { useEffect } from 'react';
 import { Card } from '../../components/Card';
 import InputFile from '../../components/InputFile';
@@ -83,7 +84,7 @@ export default function Oportunities({ opportunitiesPage }: any) {
                         <h3>{opportunity.name}</h3>
 
                         <Informations>
-                          <h5>{opportunity.company}</h5>
+                          <h5>{opportunity.companyName}</h5>
                           <h5>{opportunity.city}</h5>
                         </Informations>
 
@@ -100,7 +101,11 @@ export default function Oportunities({ opportunitiesPage }: any) {
                 {selectedOpportunity ? (
                   <SelectedOpportunityContent>
                     <h1>{selectedOpportunity.name}</h1>
-                    <h3>{selectedOpportunity.company}</h3>
+                    <h3>
+                      <Link href={`/oportunidades/${selectedOpportunity.companyName.split(' ')[0]}`}>
+                        {selectedOpportunity.companyName}
+                      </Link>
+                    </h3>
                     <h3>{selectedOpportunity.budget}</h3>
                     <button onClick={() => setOpenModal(true)}>Inscrever-se</button>
 

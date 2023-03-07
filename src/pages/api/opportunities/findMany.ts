@@ -1,4 +1,4 @@
-import { Db } from 'mongodb';
+import { Db, ObjectId } from 'mongodb';
 import connectToDatabase from '../connection';
 
 export default async (request: any, response: any): Promise<any> => {
@@ -46,7 +46,14 @@ export default async (request: any, response: any): Promise<any> => {
       .then((results: any) => (opportunities = results))
       .catch((error) => console.error(error));
 
-    opportunities.map((opportunity) => (opportunity.company = _company.company));
+    await Promise.all(
+      opportunities.map(async (opportunity) => {
+        const _client = await db.collection('clients').findOne({ _id: new ObjectId(opportunity.company) });
+        opportunity.companyName = _client?.company;
+        return opportunity;
+      })
+    );
+
     client = _company;
 
     console.log('\nAll values of opportunities status: Success!\n');

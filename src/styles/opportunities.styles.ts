@@ -286,6 +286,17 @@ export const SelectedOpportunityContent = styled.div`
     color: #fff;
   }
 
+  h3 {
+    a {
+      color: #fff;
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+
   button {
     padding: 8px;
     margin: 0px;
