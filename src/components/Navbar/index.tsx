@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Nav, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { Link as LinkScroll } from 'react-scroll';
 import { SocialIcon } from '../styles';
 import { Brand, Navbar, NavbarText, NavContainer, NavLink, Toggle } from './styles';

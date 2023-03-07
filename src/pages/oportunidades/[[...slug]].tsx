@@ -1,6 +1,9 @@
 import { GetServerSideProps } from 'next';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card } from '../../components/Card';
+import InputFile from '../../components/InputFile';
+import { Modal } from '../../components/Modal';
+import useForm from '../../components/UseForm';
 import api from '../../services/api';
 import {
   Content,
@@ -13,6 +16,8 @@ import {
   ImageContainer,
   ContainerOportunitiesContent,
   SelectedOpportunityContent,
+  Form,
+  FooterButton,
 } from '../../styles/opportunities.styles';
 
 export default function Oportunities({ opportunitiesPage }: any) {
@@ -21,18 +26,37 @@ export default function Oportunities({ opportunitiesPage }: any) {
   const [selectedOpportunity, setSelectedOpportunity] = React.useState<any>();
   const [skillNames, setSkillNames] = React.useState<any>();
 
+  const [openModal, setOpenModal] = React.useState<boolean>(false);
+
+  const fields = {
+    name: '',
+    cpf: '',
+    curriculum: '',
+  };
+
+  const { form, handleInputChange, reset } = useForm({ fields });
+
   function createMatter() {
     return { __html: skillNames };
   }
 
+  useEffect(() => {
+    if (openModal) {
+      document.body.style['overflow-y' as any] = 'hidden';
+      return;
+    }
+
+    document.body.style['overflow-y' as any] = 'auto';
+  }, [openModal]);
+
   return (
     <>
       <OportunitiesContainer>
-        <form>
+        <Form>
           <img src="/assets/imgs/theos-logo.png" alt="logo" />
           <input type="text" placeholder="Digite o nome da oportunidade" />
           <button type="button">FILTRAR</button>
-        </form>
+        </Form>
 
         <ImageContainer background={client?.background ?? '/assets/img/banner-bg.png'}>
           <Figure>
@@ -78,10 +102,15 @@ export default function Oportunities({ opportunitiesPage }: any) {
                     <h1>{selectedOpportunity.name}</h1>
                     <h3>{selectedOpportunity.company}</h3>
                     <h3>{selectedOpportunity.budget}</h3>
+                    <button onClick={() => setOpenModal(true)}>Inscrever-se</button>
+
                     <br />
+
                     <h3>Descrição:</h3>
                     <p>{selectedOpportunity.description}</p>
+
                     <br />
+
                     <h3>Requisitos:</h3>
                     <p dangerouslySetInnerHTML={createMatter()} />
                   </SelectedOpportunityContent>
@@ -93,6 +122,28 @@ export default function Oportunities({ opportunitiesPage }: any) {
           </OportunitiesContent>
         </ContainerOportunitiesContent>
       </OportunitiesContainer>
+
+      <Modal title={`${selectedOpportunity?.name}`} open={openModal} onClose={setOpenModal}>
+        <Form>
+          <input type="text" value={form.name} name="name" placeholder="Nome completo" onChange={handleInputChange} />
+
+          <input type="text" value={form.cpf} name="cpf" placeholder="CPF" onChange={handleInputChange} />
+
+          <InputFile value={form.curriculum} name="curriculum" onChange={handleInputChange} />
+        </Form>
+
+        <FooterButton>
+          <button
+            onClick={() => {
+              setOpenModal(false);
+              reset();
+            }}
+          >
+            Cancelar
+          </button>
+          <button>Inscrever-se</button>
+        </FooterButton>
+      </Modal>
     </>
   );
 }

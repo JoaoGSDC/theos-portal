@@ -4,52 +4,6 @@ export const OportunitiesContainer = styled.div`
   width: 100vw;
   height: calc(100vh - 300px);
 
-  form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 16px 16px 16px 8px;
-
-    position: absolute;
-    width: 100%;
-    background-color: #121212;
-
-    img {
-      width: 10%;
-      margin-right: 16px;
-    }
-
-    input,
-    textarea {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      border-radius: 20px;
-      color: #fff;
-      padding: 8px 12px;
-      font-weight: 500;
-      font-size: 1rem;
-      letter-spacing: 0.8px;
-      transition: 0.3s ease-in-out;
-
-      &:focus {
-        background: rgba(255, 255, 255, 1);
-        color: #121212;
-
-        &::placeholder {
-          color: #121212;
-          opacity: 0.8;
-        }
-      }
-
-      &::placeholder {
-        font-size: 16px;
-        font-weight: 400;
-        color: #fff;
-      }
-    }
-  }
-
   button {
     font-weight: 700;
     color: #000;
@@ -86,6 +40,115 @@ export const OportunitiesContainer = styled.div`
 
       button {
         padding: 8px 24px;
+      }
+    }
+  }
+`;
+
+export const Form = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 16px 16px 8px;
+
+  position: absolute;
+  width: 100%;
+  background-color: #121212;
+
+  img {
+    width: 10%;
+    margin-right: 16px;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    color: #fff;
+    padding: 8px 12px;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.8px;
+    transition: 0.3s ease-in-out;
+
+    &:focus {
+      background: rgba(255, 255, 255, 1);
+      color: #121212;
+
+      &::placeholder {
+        color: #121212;
+        opacity: 0.8;
+      }
+    }
+
+    &::placeholder {
+      font-size: 16px;
+      font-weight: 400;
+      color: #fff;
+    }
+  }
+`;
+
+export const FooterButton = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  button:first-child {
+    font-weight: 700;
+    color: #fff;
+    background-color: transparent;
+    padding: 14px 48px;
+    font-size: 18px;
+    margin-left: 8px;
+    border-radius: 32px;
+    position: relative;
+    transition: 0.3s ease-in-out;
+    border: 1px solid #fff;
+
+    span {
+      z-index: 1;
+      position: relative;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background: #121212;
+      transition: 0.3s ease-in-out;
+      color: #fff !important;
+
+      &:before {
+        width: 100%;
+      }
+    }
+  }
+
+  button:last-child {
+    font-weight: 700;
+    color: #000;
+    background-color: #fff;
+    padding: 14px 48px;
+    font-size: 18px;
+    margin-left: 8px;
+    border-radius: 32px;
+    position: relative;
+    transition: 0.3s ease-in-out;
+
+    span {
+      z-index: 1;
+      position: relative;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background: #121212;
+      transition: 0.3s ease-in-out;
+      color: #fff !important;
+
+      &:before {
+        width: 100%;
       }
     }
   }
@@ -221,5 +284,11 @@ export const SelectedOpportunityContent = styled.div`
 
   h1 {
     color: #fff;
+  }
+
+  button {
+    padding: 8px;
+    margin: 0px;
+    margin-top: 16px;
   }
 `;
