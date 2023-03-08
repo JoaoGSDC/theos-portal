@@ -8,7 +8,7 @@ export const OportunitiesContainer = styled.div`
     font-weight: 700;
     color: #000;
     background-color: #fff;
-    padding: 14px 48px;
+    padding: 8px 24px;
     font-size: 18px;
     margin-left: 8px;
     border-radius: 32px;
@@ -36,10 +36,6 @@ export const OportunitiesContainer = styled.div`
     form {
       img {
         display: none;
-      }
-
-      button {
-        padding: 8px 24px;
       }
     }
   }
