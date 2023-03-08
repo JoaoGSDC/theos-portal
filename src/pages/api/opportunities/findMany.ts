@@ -8,12 +8,12 @@ export default async (request: any, response: any): Promise<any> => {
   try {
     const db: Db = await connectToDatabase(process.env.MONGODB_URI);
 
-    const { limit, page, company } = request.query;
+    const { limit, page, company, filter } = request.query;
 
     let _company: any = {};
     let companyId = '';
 
-    if (company !== '') {
+    if (company !== '' && company != undefined) {
       _company = (
         await db
           .collection('clients')
@@ -26,12 +26,16 @@ export default async (request: any, response: any): Promise<any> => {
 
     let query: any = {};
 
-    if (company !== '' && companyId !== '') {
+    if (company !== '' && companyId !== '' && company != undefined && companyId != undefined) {
       query.company = { $eq: companyId.toString() };
     }
 
-    if (company !== '' && companyId == '') {
+    if (company !== '' && companyId == '' && company != undefined) {
       query.company = { $eq: undefined };
+    }
+
+    if (filter !== '' && filter != undefined) {
+      query.name = { $regex: filter, $options: 'i' };
     }
 
     await db
