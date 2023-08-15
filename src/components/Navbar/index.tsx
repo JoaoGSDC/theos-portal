@@ -56,15 +56,15 @@ export const NavBar = () => {
 
             <NavbarText>
               <SocialIcon>
-                <a href="#" target="_blank">
+                <a href="https://www.linkedin.com/company/bycross-software" target="_blank">
                   <img src={navIcon1} alt="" />
                 </a>
 
-                <a href="#" target="_blank">
+                {/* <a href="#" target="_blank">
                   <img src={navIcon2} alt="" />
-                </a>
+                </a> */}
 
-                <a href="#" target="_blank">
+                <a href="https://www.instagram.com/bycross.software/" target="_blank">
                   <img src={navIcon3} alt="" />
                 </a>
               </SocialIcon>

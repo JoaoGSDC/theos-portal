@@ -57,7 +57,7 @@ export default function Partners({ clients }: Props) {
                 {clients?.map((client: any) => {
                   return (
                     <>
-                      <SliderItem>
+                      <SliderItem key={client}>
                         <img src={client.logo} alt="Image" />
                       </SliderItem>
                     </>

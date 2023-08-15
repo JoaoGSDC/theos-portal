@@ -21,6 +21,7 @@ import {
   Form,
   FooterButton,
 } from '../../styles/opportunities.styles';
+import { Footer } from '../../components/FooterOpportunities';
 
 export default function Oportunities({ opportunitiesPage, slug }: any) {
   const { client } = opportunitiesPage;
@@ -187,6 +188,7 @@ export default function Oportunities({ opportunitiesPage, slug }: any) {
                     return (
                       <>
                         <Card
+                          key={opportunity}
                           isButton={true}
                           onClick={() => {
                             const teste = opportunity.skills.technical.items
@@ -246,6 +248,8 @@ export default function Oportunities({ opportunitiesPage, slug }: any) {
             </RightContent>
           </OportunitiesContent>
         </ContainerOportunitiesContent>
+
+        <Footer />
       </OportunitiesContainer>
 
       <Modal title={`${selectedOpportunity?.name}`} open={openModal} onClose={setOpenModal}>
