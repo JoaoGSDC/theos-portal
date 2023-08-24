@@ -20,6 +20,7 @@ import {
   SelectedOpportunityContent,
   Form,
   FooterButton,
+  BackButton,
 } from '../../styles/opportunities.styles';
 import { Footer } from '../../components/FooterOpportunities';
 
@@ -93,13 +94,13 @@ export default function Oportunities({ opportunitiesPage, slug }: any) {
   }, []);
 
   useEffect(() => {
-    if (openModal) {
+    if (openModal || (selectedOpportunity && window.innerWidth < 601)) {
       document.body.style['overflow-y' as any] = 'hidden';
       return;
     }
 
     document.body.style['overflow-y' as any] = 'auto';
-  }, [openModal]);
+  }, [openModal, selectedOpportunity]);
 
   const handleInsertOpportunityApplication = async () => {
     if (form.name === '' || form.cpf === '___.___.___-__' || form.cpf === '' || form.curriculum === '') {
@@ -191,11 +192,10 @@ export default function Oportunities({ opportunitiesPage, slug }: any) {
                           key={opportunity}
                           isButton={true}
                           onClick={() => {
-                            const teste = opportunity.skills.technical.items
+                            const _skillNames = opportunity.skills.technical.items
                               .map((value: any) => value.name)
                               .join('<br />');
-                            console.log(teste);
-                            setSkillNames(teste);
+                            setSkillNames(_skillNames);
                             setSelectedOpportunity(opportunity);
                           }}
                         >
@@ -218,8 +218,9 @@ export default function Oportunities({ opportunitiesPage, slug }: any) {
               <div id="sentinela" />
             </LeftContent>
 
-            <RightContent>
+            <RightContent open={selectedOpportunity}>
               <Card>
+                <BackButton onClick={() => setSelectedOpportunity(null)}>{'←'}</BackButton>
                 {selectedOpportunity ? (
                   <SelectedOpportunityContent>
                     <h1>{selectedOpportunity.name}</h1>

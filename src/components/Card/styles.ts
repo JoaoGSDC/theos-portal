@@ -18,4 +18,8 @@ export const GlassCard = styled.div.attrs(({ isButton }: any) => ({
   &:hover {
     background-color: ${(props) => (props.isButton ? 'rgba(30, 30, 30, 0.6)' : 'rgba(18, 18, 18, 0.6)')};
   }
+
+  @media only screen and (max-width: 600px) {
+    background: rgba(18, 18, 18, 0.85);
+  }
 `;

@@ -230,7 +230,9 @@ export const LeftContent = styled.div`
   }
 `;
 
-export const RightContent = styled.div`
+export const RightContent = styled.div.attrs(({ open }: any) => ({
+  open,
+}))`
   display: flex;
   width: 100%;
 
@@ -243,7 +245,35 @@ export const RightContent = styled.div`
   }
 
   @media only screen and (max-width: 600px) {
-    display: none;
+    display: ${(props) => (props.open ? 'flex' : 'none')};
+
+    position: absolute;
+    top: -50%;
+    height: 100vh;
+
+    div:first-child {
+      margin-top: 60px;
+      width: 100%;
+      margin-left: 0px;
+      margin-right: 0px;
+      height: 100vh;
+      overflow: auto;
+      max-height: 100vh;
+    }
+  }
+`;
+
+export const BackButton = styled.button`
+  display: none;
+  font-weight: 900 !important;
+  background: transparent !important;
+  color: white !important;
+  font-size: 52px !important;
+  padding: 0px !important;
+  margin: 0px !important;
+
+  @media only screen and (max-width: 600px) {
+    display: flex;
   }
 `;
 
