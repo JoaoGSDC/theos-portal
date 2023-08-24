@@ -31,6 +31,7 @@ export const FooterContainer = styled.footer`
   }
 
   @media only screen and (max-width: 600px) {
+    display: none;
     flex-direction: column;
   }
 `;
